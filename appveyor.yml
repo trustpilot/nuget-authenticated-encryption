@@ -15,6 +15,9 @@ branches:
 pull_requests:
   do_not_increment_build_number: true
 
+before_build:
+  - dotnet restore
+
 build:
   project: AuthenticatedEncryption.sln
   publish_nuget: true
