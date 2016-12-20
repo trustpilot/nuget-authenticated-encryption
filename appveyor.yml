@@ -20,8 +20,12 @@ before_build:
 
 build:
   project: AuthenticatedEncryption.sln
-  publish_nuget: true
-  publish_nuget_symbols: true
+
+after_test:
+  - dotnet pack .\AuthenticatedEncryption -c Release --version-suffix=%APPVEYOR_BUILD_NUMBER%
+
+artifacts:
+  - path: '**\*.nupkg'
 
 deploy:
   - provider: NuGet
