@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "0.1.0-beta-*",
 
   "packOptions": {
     "licenseUrl": "https://github.com/trustpilot/nuget-authenticated-encryption/blob/master/LICENSE",
