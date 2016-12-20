@@ -9,7 +9,8 @@ assembly_info:
 configuration: Release
 
 branches:
-  only: master
+  only:
+    - master
 
 pull_requests:
   do_not_increment_build_number: true
