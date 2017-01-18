@@ -1,20 +1,13 @@
 version: '{build}'
 
-image: Visual Studio 2015
-
-install:
-  - ps: $env:package_version = (Get-Content -Raw -Path AuthenticatedEncryption/project.json | ConvertFrom-Json).version
-  - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
-
-assembly_info:
-  patch: true
-  assembly_version: '{version}'
-
 configuration: Release
 
 branches:
   only:
     - master
+
+nuget:
+  disable_publish_on_pr: true
 
 pull_requests:
   do_not_increment_build_number: true
@@ -29,14 +22,23 @@ test_script:
   - dotnet test "AuthenticatedEncryption.Tests" --configuration %configuration%
 
 after_test:
-  - dotnet pack .\AuthenticatedEncryption -c Release
+  - dotnet pack .\AuthenticatedEncryption -c Release --version-suffix %APPVEYOR_BUILD_NUMBER%
 
 artifacts:
   - path: '**\*.nupkg'
 
 deploy:
   - provider: NuGet
+    name: myget
+    server: https://trustpilot.myget.org/F/libraries/api/v2/package
+    api_key:
+      secure: Yc1XzJ8dryVs6qXbRM5hRLbQjCHDkp8sY5rwuYsRClQ29vVFUlVfT0XpGWm5o/6m
+    on:
+      branch: master
+  - provider: NuGet
+    name: nuget.org
     api_key:
       secure: ANJVg76+ZG8oux3kZiS8MazTByIDILozxNJfQGa0zD3+1+jXaPN152mDu4JFyuka
     on:
       branch: master
+      appveyor_repo_tag: true
