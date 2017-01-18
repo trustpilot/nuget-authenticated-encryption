@@ -31,6 +31,7 @@ deploy:
   - provider: NuGet
     name: myget
     server: https://trustpilot.myget.org/F/libraries/api/v2/package
+    skip_symbols: true
     api_key:
       secure: Yc1XzJ8dryVs6qXbRM5hRLbQjCHDkp8sY5rwuYsRClQ29vVFUlVfT0XpGWm5o/6m
     on:
