@@ -2,6 +2,10 @@ version: '{build}'
 
 image: Visual Studio 2015
 
+install:
+  - ps: $env:package_version = (Get-Content -Raw -Path AuthenticatedEncryption/project.json | ConvertFrom-Json).version
+  - ps: Update-AppveyorBuild -Version "$env:package_version-$env:APPVEYOR_BUILD_NUMBER"
+
 assembly_info:
   patch: true
   assembly_version: '{version}'
@@ -25,7 +29,7 @@ test_script:
   - dotnet test "AuthenticatedEncryption.Tests" --configuration %configuration%
 
 after_test:
-  - dotnet pack .\AuthenticatedEncryption -c Release --version-suffix %APPVEYOR_BUILD_NUMBER%
+  - dotnet pack .\AuthenticatedEncryption -c Release
 
 artifacts:
   - path: '**\*.nupkg'
