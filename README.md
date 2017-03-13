@@ -7,9 +7,17 @@ The library is based on this Gist by James Tuley: https://gist.github.com/jbtule
 
 [![Build status](https://ci.appveyor.com/api/projects/status/du8bm82f1ru6ja3n?svg=true)](https://ci.appveyor.com/project/TrustpilotAppVeyor/nuget-authenticated-encryption)
 
+## Installation
+
+Install via [NuGet](http://www.nuget.org/packages/AuthenticatedEncryption/):
+
+```
+Install-Package AuthenticatedEncryption
+```
+
 ## More information
 
-The library consists of a single static class. This makes it very easy to use. It uses [Authenticated Encryption with Associated Data (AEAD)](https://en.wikipedia.org/wiki/Authenticated_encryption), using the approach called ìEncrypt then MACî (EtM). It uses one key for the encryption part (cryptkey) and another key for the MAC part (authkey).
+The library consists of a single static class. This makes it very easy to use. It uses [Authenticated Encryption with Associated Data (AEAD)](https://en.wikipedia.org/wiki/Authenticated_encryption), using the approach called ‚ÄúEncrypt then MAC‚Äù (EtM). It uses one key for the encryption part (cryptkey) and another key for the MAC part (authkey).
 
 This is a simple example of encrypting and decrypting some string:
 
@@ -24,4 +32,4 @@ var plainText = AuthenticatedEncryption.Decrypt(cipherText, cryptKey, authKey);
 
 ## Maintainer(s)
 
-- [S¯ren Pedersen (@spewu)](https://github.com/spewu)
+- [S√∏ren Pedersen (@spewu)](https://github.com/spewu)
