@@ -21,7 +21,7 @@ build:
   project: AuthenticatedEncryption.sln
 
 test_script:
-  - dotnet test "AuthenticatedEncryption.Tests" --configuration %configuration%
+  - dotnet test "AuthenticatedEncryption.Tests/AuthenticatedEncryption.Tests.csproj" --configuration %configuration%
 
 after_test:
   - dotnet pack .\AuthenticatedEncryption -c Release --version-suffix %APPVEYOR_BUILD_NUMBER%
