@@ -5,7 +5,7 @@
     using System.Security.Cryptography;
     using System.Text;
 
-    public static class AuthenticatedEncryption
+    public static class Encryption
     {
         private static readonly RandomNumberGenerator Random = RandomNumberGenerator.Create();
 

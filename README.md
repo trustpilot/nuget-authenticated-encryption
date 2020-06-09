@@ -22,12 +22,14 @@ The library consists of a single static class. This makes it very easy to use. I
 This is a simple example of encrypting and decrypting some string:
 
 ```c#
-const string Input = "this is a test input string";
-var cryptKey = AuthenticatedEncryption.NewKey();
-var authKey = AuthenticatedEncryption.NewKey();
+using AuthenticatedEncryption;
 
-var cipherText = AuthenticatedEncryption.Encrypt(Input, cryptKey, authKey);
-var plainText = AuthenticatedEncryption.Decrypt(cipherText, cryptKey, authKey);
+const string Input = "this is a test input string";
+var cryptKey = Encryption.NewKey();
+var authKey = Encryption.NewKey();
+
+var cipherText = Encryption.Encrypt(Input, cryptKey, authKey);
+var plainText = Encryption.Decrypt(cipherText, cryptKey, authKey);
 ```
 
 ## Maintainer(s)

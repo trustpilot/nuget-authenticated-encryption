@@ -10,11 +10,11 @@
         public void Encrypt_WhenGivenInput_EncryptsAndDecryptsCorrectly()
         {
             const string Input = "this is a test input string";
-            var cryptKey = AuthenticatedEncryption.NewKey();
-            var authKey = AuthenticatedEncryption.NewKey();
+            var cryptKey = Encryption.NewKey();
+            var authKey = Encryption.NewKey();
 
-            var cipherText = AuthenticatedEncryption.Encrypt(Input, cryptKey, authKey);
-            var plainText = AuthenticatedEncryption.Decrypt(cipherText, cryptKey, authKey);
+            var cipherText = Encryption.Encrypt(Input, cryptKey, authKey);
+            var plainText = Encryption.Decrypt(cipherText, cryptKey, authKey);
 
             plainText.ShouldBe(Input);
         }
@@ -29,7 +29,7 @@
             var cryptKey = Convert.FromBase64String(CryptKey);
             var authKey = Convert.FromBase64String(AuthKey);
 
-            var plainText = AuthenticatedEncryption.Decrypt(CipherText, cryptKey, authKey);
+            var plainText = Encryption.Decrypt(CipherText, cryptKey, authKey);
 
             plainText.ShouldBe(Input);
         }
