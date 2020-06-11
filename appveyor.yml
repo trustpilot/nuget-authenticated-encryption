@@ -24,7 +24,7 @@ test_script:
   - dotnet test "AuthenticatedEncryption.Tests/AuthenticatedEncryption.Tests.csproj" --configuration %configuration%
 
 after_test:
-  - dotnet pack .\AuthenticatedEncryption -c Release --version-suffix %APPVEYOR_BUILD_NUMBER%
+  - dotnet pack .\AuthenticatedEncryption -c Release
 
 artifacts:
   - path: '**\*.nupkg'
@@ -38,6 +38,7 @@ deploy:
       secure: Yc1XzJ8dryVs6qXbRM5hRLbQjCHDkp8sY5rwuYsRClQ29vVFUlVfT0XpGWm5o/6m
     on:
       branch: master
+      appveyor_repo_tag: true
   - provider: NuGet
     name: nuget.org
     api_key:
