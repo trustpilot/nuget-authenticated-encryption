@@ -41,7 +41,7 @@ deploy:
   - provider: NuGet
     name: nuget.org
     api_key:
-      secure: ANJVg76+ZG8oux3kZiS8MazTByIDILozxNJfQGa0zD3+1+jXaPN152mDu4JFyuka
+      secure: s9avEz261DL/e11E3k2CvM+Rnr3t10FWzYvH+5HddkytYKT0FediEdye1hujM/Gb
     on:
       branch: master
       appveyor_repo_tag: true
